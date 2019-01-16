@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  
+  <body>
+    <div class="container" style="background:#f7ecea">
+      <div class="jumbotron text-center" style="padding:2%;background:#f2c9ba">
+        <h1>Mission to Mars</h1>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+      <!-- Mission to Mars Listings -->
+      <h1>Latest Mars News</h1>
+      <h3 class="heading"><a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest">{{listings.latest_title}}</a></h3>
+      <p style="font-size:15px">{{listings.description}}</p>
+      
+      <div class="row" id="Mission-listings" style="margin:0.25%;padding:2%;background:#f2c9ba">
+        <div class="col-md-8" ><a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars">
+        <img src={{listings.featured_image_url}} width=100% height=100%></a>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="inner">
+          <div class="card border-primary mb-3" style="width:100%">
+            <div class="card-header" style="font-size:15px">Current Weather on Mars</div>
+            <div class="card-body text-primary">
+              <p class="card-text" style="font-size:15px">{{listings.mars_weather}}</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3>Mars Fact</h3>
+        <div class="table" style='background:#4286f4' width=100%><p style="font-size:12px">{{listings.html_table|safe}}</p></div>
+      </div>
+    </div>
+    <div class="row" id="hemi" style="margin:0.25%;padding:2%;background:#f2c9ba">
+      <div class="container">
+        <div class="row">
+          <div>
+            <div class="col-md-6"><a href="http://www.planetary.org/multimedia/space-images/mars/20140202_valles_marineris_enhanced.html"><img src="{{listings.hemisphere_image_urls[0]['img_url']}}" width=100%></a></div>
+            <div class="col-md-6"><a href="http://www.planetary.org/multimedia/space-images/mars/20140202_syrtis_major_enhanced.html"><img src={{listings.hemisphere_image_urls[1]['img_url']}} width=100%></a></div></div>
+            <div class="w-100" style="margin:0.25%;padding:2%"></div>
+            <div>
+              <div class="col-md-6"><a href="http://www.planetary.org/multimedia/space-images/mars/20140202_syrtis_major_enhanced.html"><img src={{listings.hemisphere_image_urls[2]['img_url']}} width=100%></a></div>
+              <div class="col-md-6"><a href="http://www.planetary.org/multimedia/space-images/mars/mars-schiaparelli-hemisphere.html"><img src={{listings.hemisphere_image_urls[3]['img_url']}} width=100%></a></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
